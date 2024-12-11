@@ -2,6 +2,7 @@ import React from 'react';
 import NavbarLayout from './layouts/NavbarLayout';
 import HeroComponent from './components/HeroComponent';
 import WeCreateComponent from './components/WeCreateComponent';
+import NewProductComponent from './components/NewProductComponent';
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
       <NavbarLayout />
       <HeroComponent />
       <WeCreateComponent />
+      <NewProductComponent />
     </div>
   );
 };
