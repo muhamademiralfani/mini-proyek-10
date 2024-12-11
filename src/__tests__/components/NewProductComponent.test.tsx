@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import NewProductComponent from '../../components/NewProductComponent';
-import chair from '../../assets/chair.png';
 
 describe('NewProductComponent', () => {
   // Mock gambar chair
