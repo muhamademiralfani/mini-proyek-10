@@ -2,12 +2,16 @@ import { configureStore } from '@reduxjs/toolkit';
 import headerReducer from './async/headerSlice';
 import dataReducer from './async/dataSlice';
 import categoryReducer from './async/categorySlice';
+import productReducer from './async/productSlice';
+import testimonialReducer from './async/testimonialSlice';
 
 const store = configureStore({
   reducer: {
     header: headerReducer,
     data: dataReducer,
     category: categoryReducer,
+    products: productReducer,
+    testimonials: testimonialReducer,
   },
 });
 
