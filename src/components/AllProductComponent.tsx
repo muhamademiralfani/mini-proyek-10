@@ -14,14 +14,14 @@ const AllProductComponent: React.FC = () => {
   const products: Product[] = [
     { id: 1, name: 'Ceiling Light', price: 75.0, oldPrice: 82.0, image: kursi },
     { id: 2, name: 'Wood Chair', price: 50.0, oldPrice: 70.0, image: lemari },
-    { id: 1, name: 'Ceiling Light', price: 75.0, oldPrice: 82.0, image: kursi },
-    { id: 1, name: 'Ceiling Light', price: 75.0, oldPrice: 82.0, image: kursi },
-    { id: 1, name: 'Ceiling Light', price: 75.0, oldPrice: 82.0, image: kursi },
-    { id: 2, name: 'Wood Chair', price: 50.0, oldPrice: 70.0, image: lemari },
-    { id: 1, name: 'Ceiling Light', price: 75.0, oldPrice: 82.0, image: kursi },
-    { id: 2, name: 'Wood Chair', price: 50.0, oldPrice: 70.0, image: lemari },
-    { id: 1, name: 'Ceiling Light', price: 75.0, oldPrice: 82.0, image: kursi },
-    { id: 2, name: 'Wood Chair', price: 50.0, oldPrice: 70.0, image: lemari },
+    { id: 3, name: 'Ceiling Light', price: 75.0, oldPrice: 82.0, image: kursi },
+    { id: 4, name: 'Ceiling Light', price: 75.0, oldPrice: 82.0, image: kursi },
+    { id: 5, name: 'Ceiling Light', price: 75.0, oldPrice: 82.0, image: kursi },
+    { id: 6, name: 'Wood Chair', price: 50.0, oldPrice: 70.0, image: lemari },
+    { id: 7, name: 'Ceiling Light', price: 75.0, oldPrice: 82.0, image: kursi },
+    { id: 8, name: 'Wood Chair', price: 50.0, oldPrice: 70.0, image: lemari },
+    { id: 9, name: 'Ceiling Light', price: 75.0, oldPrice: 82.0, image: kursi },
+    { id: 10, name: 'Wood Chair', price: 50.0, oldPrice: 70.0, image: lemari },
   ];
 
   const [currentPage, setCurrentPage] = useState(1);

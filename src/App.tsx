@@ -7,6 +7,7 @@ import BestFurnitureComponent from './components/BestFurnitureComponent';
 import AllProductComponent from './components/AllProductComponent';
 import AboutUsComponent from './components/AboutUsComponent';
 import ContactUsComponent from './components/ContactUsComponent';
+import FooterLayout from './layouts/FooterLayout';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <AllProductComponent />
       <AboutUsComponent />
       <ContactUsComponent />
+      <FooterLayout />
     </div>
   );
 };

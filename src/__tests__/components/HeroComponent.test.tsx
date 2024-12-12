@@ -1,45 +1,64 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { Provider } from 'react-redux';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import HeroComponent from '../../components/HeroComponent';
 
-jest.mock('../../components/UI/StatsDisplay', () => jest.fn(() => <div data-testid='stats-display'>Mock StatsDisplay</div>));
+// Mock Redux Store
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
+jest.mock('../../redux/async/headerSlice', () => ({
+  fetchHeader: jest.fn(() => ({ type: 'header/fetchHeader/pending' })),
+}));
 
 describe('HeroComponent', () => {
-  test('renders HeroComponent with background image', () => {
-    render(<HeroComponent />);
-
-    const header = screen.getByRole('banner');
-    expect(header).toHaveStyle({
-      background: expect.stringContaining('hero-banner.png'), // Check if the background contains the image path
+  it('renders loading state correctly', () => {
+    const store = mockStore({
+      header: { title: '', description: '', banner: '', status: 'loading' },
     });
-    expect(header).toHaveStyle('height: 135vh');
+
+    render(
+      <Provider store={store}>
+        <HeroComponent />
+      </Provider>
+    );
+
+    expect(screen.getByText(/loading.../i)).toBeInTheDocument();
   });
 
-  test('renders main title', () => {
-    render(<HeroComponent />);
-    const title = screen.getByText('Creative Home Simpify your Furniture');
-    expect(title).toBeInTheDocument();
-    expect(title).toHaveClass('font-bold');
+  it('renders error state correctly', () => {
+    const store = mockStore({
+      header: { title: '', description: '', banner: '', status: 'failed' },
+    });
+
+    render(
+      <Provider store={store}>
+        <HeroComponent />
+      </Provider>
+    );
+
+    expect(screen.getByText(/failed to load header data/i)).toBeInTheDocument();
   });
 
-  test('renders paragraph text', () => {
-    render(<HeroComponent />);
-    const paragraph = screen.getByText(/Do i have consent to record this meeting gain locaion, root-and-branch, review, nor game plan who’s the goto/i);
-    expect(paragraph).toBeInTheDocument();
-    expect(paragraph).toHaveClass('text-base');
-  });
+  it('renders success state correctly', () => {
+    const store = mockStore({
+      header: {
+        title: 'Welcome to Our Store',
+        description: 'Find the best furniture for your home.',
+        banner: 'test-banner-url.jpg',
+        status: 'succeeded',
+      },
+    });
 
-  test('renders "Shop Now" button', () => {
-    render(<HeroComponent />);
-    const button = screen.getByRole('button', { name: /shop now/i });
-    expect(button).toBeInTheDocument();
-    expect(button).toHaveClass('px-10');
-  });
+    render(
+      <Provider store={store}>
+        <HeroComponent />
+      </Provider>
+    );
 
-  test('renders StatsDisplay component', () => {
-    render(<HeroComponent />);
-    const statsDisplay = screen.getByTestId('stats-display');
-    expect(statsDisplay).toBeInTheDocument();
+    expect(screen.getByText(/welcome to our store/i)).toBeInTheDocument();
+    expect(screen.getByText(/find the best furniture for your home/i)).toBeInTheDocument();
   });
 });
