@@ -1,64 +1,86 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import NewProductComponent from '../../components/NewProductComponent';
 
+// Mock Redux Store
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
+// Mock fetchCategories Action
+jest.mock('../../redux/async/categorySlice', () => ({
+  fetchCategories: jest.fn(() => ({ type: 'category/fetchCategories/pending' })),
+}));
+
 describe('NewProductComponent', () => {
-  // Mock gambar chair
-  jest.mock('../../assets/chair.png', () => 'mocked-chair-image');
-
-  beforeEach(() => {
-    render(<NewProductComponent />);
-  });
-
-  test('renders the component with correct headings', () => {
-    // Periksa judul utama
-    expect(screen.getByText('New In')).toBeInTheDocument();
-    expect(screen.getByText('Store Now')).toBeInTheDocument();
-  });
-
-  test('renders product description', () => {
-    expect(screen.getByText('Get the latest items immediately with promo prices')).toBeInTheDocument();
-  });
-
-  test('renders "Check All" link', () => {
-    const checkAllLink = screen.getByText('Check All');
-    expect(checkAllLink).toBeInTheDocument();
-    expect(checkAllLink).toHaveAttribute('href', '#');
-  });
-
-  test('renders correct number of products', () => {
-    const productNames = ['Chair', 'Bed', 'Cupboard', 'Lighting', 'Table', 'Sofa'];
-
-    productNames.forEach((name) => {
-      const productElements = screen.getAllByText(name);
-      expect(productElements.length).toBeGreaterThan(0);
+  it('renders loading state correctly', () => {
+    const store = mockStore({
+      category: { categories: [], status: 'loading', error: null },
     });
+
+    render(
+      <Provider store={store}>
+        <NewProductComponent />
+      </Provider>
+    );
+
+    expect(screen.getByText(/loading.../i)).toBeInTheDocument();
   });
 
-  test('renders product images', () => {
-    const images = screen.getAllByRole('img');
-    expect(images.length).toBe(6); // Sesuai dengan jumlah produk
-  });
-
-  test('product images have correct attributes', () => {
-    const images = screen.getAllByRole('img');
-
-    images.forEach((img, index) => {
-      const productNames = ['Chair', 'Bed', 'Cupboard', 'Lighting', 'Table', 'Sofa'];
-
-      expect(img).toHaveAttribute('alt', productNames[index]);
-      expect(img).toHaveClass('w-full');
-      expect(img).toHaveClass('h-auto');
+  it('renders error state correctly', () => {
+    const store = mockStore({
+      category: { categories: [], status: 'failed', error: 'Error fetching categories' },
     });
+
+    render(
+      <Provider store={store}>
+        <NewProductComponent />
+      </Provider>
+    );
+
+    expect(screen.getByText(/error fetching categories/i)).toBeInTheDocument();
   });
 
-  test('product containers have correct classes', () => {
-    const productContainers = screen.getAllByText(/Chair|Bed|Cupboard|Lighting|Table|Sofa/).map((el) => el.closest('div'));
-
-    productContainers.forEach((container) => {
-      expect(container).toHaveClass('relative');
-      expect(container).toHaveClass('min-w-[200px]');
-      expect(container).toHaveClass('flex-shrink-0');
+  it('renders categories correctly when data is available', () => {
+    const store = mockStore({
+      category: {
+        categories: [
+          { title: 'Chair', image: 'https://example.com/chair.png' },
+          { title: 'Table', image: 'https://example.com/table.png' },
+        ],
+        status: 'succeeded',
+        error: null,
+      },
     });
+
+    render(
+      <Provider store={store}>
+        <NewProductComponent />
+      </Provider>
+    );
+
+    expect(screen.getByAltText(/chair/i)).toBeInTheDocument();
+    expect(screen.getByAltText(/table/i)).toBeInTheDocument();
+  });
+
+  it('dispatches fetchCategories action on mount', () => {
+    const store = mockStore({
+      category: { categories: [], status: 'idle', error: null },
+    });
+
+    render(
+      <Provider store={store}>
+        <NewProductComponent />
+      </Provider>
+    );
+
+    const actions = store.getActions();
+    expect(actions).toContainEqual(
+      expect.objectContaining({
+        type: 'category/fetchCategories/pending',
+      })
+    );
   });
 });
