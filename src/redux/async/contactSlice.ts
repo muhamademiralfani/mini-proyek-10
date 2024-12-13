@@ -2,6 +2,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL;
 export interface ContactState {
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   message: string | null;
@@ -17,7 +18,7 @@ const initialState: ContactState = {
 // Async thunk for posting subscription
 export const postSubscription = createAsyncThunk<{ message: string }, string, { rejectValue: string }>('contact/postSubscription', async (email, { rejectWithValue }) => {
   try {
-    const response = await axios.post('https://furniture-api-lumoshive-academy.vercel.app/api/subscribe', { email });
+    const response = await axios.post(`${API_URL}/subscribe`, { email });
     return response.data;
   } catch (error: any) {
     return rejectWithValue(error.response?.data?.error || 'Failed to subscribe');

@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 interface Testimonial {
   id: number;
   name: string;
@@ -30,7 +32,7 @@ export const fetchTestimonials = createAsyncThunk(
   'testimonials/fetchTestimonials',
   async ({ page }: { page: number }) => {
     const response = await axios.get(
-      `https://furniture-api-lumoshive-academy.vercel.app/api/testimonials?page=${page}&limit=1`
+      `${API_URL}/testimonials?page=${page}&limit=1`
     );
     return response.data;
   }

@@ -2,6 +2,9 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+
+const API_URL = import.meta.env.VITE_API_URL;
+
 // Define types for the product and API response
 interface Product {
   id: number;
@@ -29,7 +32,7 @@ interface FetchProductsParams {
 // Async thunk for fetching products
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async ({ page = 1, limit = 8 }: FetchProductsParams, { rejectWithValue }) => {
   try {
-    const response = await axios.get(`https://furniture-api-lumoshive-academy.vercel.app/api/products`, {
+    const response = await axios.get(`${API_URL}/products`, {
       params: { page, limit },
     });
     return response.data;

@@ -2,6 +2,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 interface Category {
   title: string;
   image: string;
@@ -13,7 +15,7 @@ export interface CategoryState {
   error: string | null;
 }
 
- const initialState: CategoryState = {
+const initialState: CategoryState = {
   categories: [],
   status: 'idle',
   error: null,
@@ -30,7 +32,7 @@ export const transformCategoryData = (data: any[]): Category[] => {
 // Async thunk for fetching categories
 export const fetchCategories = createAsyncThunk('category/fetchCategories', async (_, { rejectWithValue }) => {
   try {
-    const response = await axios.get('https://furniture-api-lumoshive-academy.vercel.app/api/category');
+    const response = await axios.get(`${API_URL}/category`);
     return transformCategoryData(response.data.category);
   } catch (error: any) {
     return rejectWithValue(error.message || 'Failed to fetch categories');

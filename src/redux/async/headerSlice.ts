@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+
+const API_URL = import.meta.env.VITE_API_URL;
 interface HeaderState {
   title: string;
   description: string;
@@ -19,9 +21,10 @@ const initialState: HeaderState = {
 
 // Async thunk for fetching header data
 export const fetchHeader = createAsyncThunk('header/fetchHeader', async () => {
-  const response = await axios.get('https://furniture-api-lumoshive-academy.vercel.app/api/header');
+  const response = await axios.get(`${API_URL}/header `);
   return response.data;
 });
+
 
 const headerSlice = createSlice({
   name: 'header',
