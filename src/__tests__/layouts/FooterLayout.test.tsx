@@ -1,7 +1,5 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import FooterLayout from '../../layouts/FooterLayout';
-import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, LinkedinShareButton } from 'react-share';
 
 jest.mock('react-share', () => ({
   FacebookShareButton: jest.fn(({ children }) => <div data-testid="facebook">{children}</div>),

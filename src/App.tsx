@@ -9,7 +9,7 @@ import AboutUsComponent from './components/AboutUsComponent';
 import ContactUsComponent from './components/ContactUsComponent';
 import FooterLayout from './layouts/FooterLayout';
 
-const App = () => {
+const App : React.FC = () => {
   return (
     <div className='font-saira'>
       <NavbarLayout />
