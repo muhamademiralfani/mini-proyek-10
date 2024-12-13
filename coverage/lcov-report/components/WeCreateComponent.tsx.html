@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/HeroComponent.tsx</title>
+    <title>Code coverage report for components/WeCreateComponent.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">components</a> HeroComponent.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">components</a> WeCreateComponent.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>16/16</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -107,43 +107,24 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,50 +132,114 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchHeader } from '../redux/async/headerSlice';
-import { RootState, AppDispatch } from '../redux/store';
-import StatsDisplay from './UI/StatsDisplay';
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import we_create from '../assets/we-create.png';
+import checklist from '../assets/cheklist.svg';
 &nbsp;
-const HeroComponent: React.FC = () =&gt; {
-  const dispatch = useDispatch&lt;AppDispatch&gt;();
-  const { title, description, banner, status } = useSelector((state: RootState) =&gt; state.header);
+interface ServiceType {
+  title: string;
+  description: string;
+}
 &nbsp;
-  useEffect(() =&gt; {
-    dispatch(fetchHeader());
-  }, [dispatch]);
-&nbsp;
-  if (status === 'loading') {
-    return &lt;div&gt;Loading...&lt;/div&gt;;
-  }
-&nbsp;
-  if (status === 'failed') {
-    return &lt;div&gt;Failed to load header data&lt;/div&gt;;
-  }
+const WeCreateComponent: React.FC = () =&gt; {
+  const services: ServiceType[] = [
+    {
+      title: 'Valuation Services',
+      description: 'Sometimes features require a short description. This can be detailed description',
+    },
+    {
+      title: 'Development of Furniture Modeless',
+      description: 'Sometimes features require a short description. This can be detailed description',
+    },
+  ];
 &nbsp;
   return (
-    &lt;header
-      id='home'
-      style={{
-        background: `url(${banner}) center/cover no-repeat`,
-        width: '100%',
-        height: '135vh',
-      }}
-      className='relative'&gt;
-      &lt;div className='container h-full max-w-screen-xl mx-auto flex flex-col items-center justify-between py-4'&gt;
-        &lt;div className='flex flex-col justify-center items-center text-center text-white h-full mx-auto gap-y-10'&gt;
-          &lt;h1 className='font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl px-4'&gt;{title}&lt;/h1&gt;
-          &lt;p className='text-base sm:text-lg md:text-xl lg:w-1/2 w-3/4 whitespace-normal'&gt;{description}&lt;/p&gt;
-          &lt;button className='px-10 sm:px-16 md:px-20 py-3 sm:py-4 mt-6 bg-white bg-opacity-35 rounded-lg text-lg sm:text-xl'&gt;Shop Now&lt;/button&gt;
-        &lt;/div&gt;
-        &lt;StatsDisplay /&gt;
+    &lt;section id='about' className='flex lg:flex-row flex-col-reverse container max-w-screen-xl mx-auto min-h-screen items-center gap-12 px-4 py-16' data-testid='we-create-section'&gt;
+      &lt;div className='lg:w-1/2 w-full' data-testid='we-create-image-container'&gt;
+        &lt;img src={we_create} className='w-full h-auto object-cover rounded-lg shadow-lg' alt='Furniture showcase' data-testid='main-image' /&gt;
       &lt;/div&gt;
-    &lt;/header&gt;
+      &lt;div className='lg:w-1/2 w-full flex flex-col gap-6' data-testid='we-create-content'&gt;
+        &lt;div className='space-y-4'&gt;
+          &lt;h2 className='text-4xl font-semibold text-gray-900 leading-tight' data-testid='we-create-heading'&gt;
+            We Create your home more aesthetic
+          &lt;/h2&gt;
+          &lt;p className='text-gray-600 text-lg leading-relaxed max-w-xl' data-testid='we-create-description'&gt;
+            Furniture power is a software as services for multipurpose business management system.
+          &lt;/p&gt;
+        &lt;/div&gt;
+&nbsp;
+        &lt;div className='space-y-8 mt-4'&gt;
+          {services.map((service, index) =&gt; (
+            &lt;div className='flex gap-4' key={index} data-testid={`service-item-${index}`}&gt;
+              &lt;div className='flex-shrink-0'&gt;
+                &lt;img src={checklist} alt={`Checklist icon for ${service.title}`} data-testid={`service-icon-${index}`} /&gt;
+              &lt;/div&gt;
+              &lt;div&gt;
+                &lt;h3 className='font-semibold text-xl text-gray-900 mb-2' data-testid={`service-title-${index}`}&gt;
+                  {service.title}
+                &lt;/h3&gt;
+                &lt;p className='text-gray-600 leading-relaxed' data-testid={`service-description-${index}`}&gt;
+                  {service.description}
+                &lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          ))}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
   );
 };
 &nbsp;
-export default HeroComponent;
+export default WeCreateComponent;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

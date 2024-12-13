@@ -1,5 +1,16 @@
 import React from 'react';
-import { Instagram, Facebook, Twitter, Github, Globe } from 'lucide-react';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  LinkedinShareButton,
+} from 'react-share';
+import {
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon,
+  LinkedinIcon,
+} from 'react-share';
 
 interface FooterLink {
   label: string;
@@ -60,30 +71,31 @@ const FooterLayout: React.FC = () => {
     },
   ];
 
-  const socialLinks = [
-    { icon: <Instagram size={20} />, href: '#' },
-    { icon: <Facebook size={20} />, href: '#' },
-    { icon: <Twitter size={20} />, href: '#' },
-    { icon: <Github size={20} />, href: '#' },
-    { icon: <Globe size={20} />, href: '#' },
-  ];
+  const shareUrl = 'https://yourwebsite.com'; // Replace with your URL
 
   return (
-    <footer className='bg-gray-900 text-white py-12 '>
-      <div className=' px-4 container max-w-screen-xl mx-auto'>
+    <footer className='bg-gray-900 text-white py-12'>
+      <div className='px-4 container max-w-screen-xl mx-auto'>
         {/* Header with Logo and Social Links */}
         <div className='flex flex-col md:flex-row justify-between items-center mb-8'>
           <h2 className='text-2xl font-bold mb-4 md:mb-0'>FurniShop</h2>
           <div className='flex gap-4'>
-            {socialLinks.map((social, index) => (
-              <a key={index} href={social.href} className='p-2 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors'>
-                {social.icon}
-              </a>
-            ))}
+            <FacebookShareButton url={shareUrl}>
+              <FacebookIcon size={48} round />
+            </FacebookShareButton>
+            <TwitterShareButton url={shareUrl}>
+              <TwitterIcon size={48} round />
+            </TwitterShareButton>
+            <WhatsappShareButton url={shareUrl}>
+              <WhatsappIcon size={48} round />
+            </WhatsappShareButton>
+            <LinkedinShareButton url={shareUrl}>
+              <LinkedinIcon size={48} round />
+            </LinkedinShareButton>
           </div>
         </div>
 
-        <hr className='border-gray-800 my-8' />
+        <hr className='border-gray-500 my-8' />
 
         {/* Footer Links */}
         <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8'>
