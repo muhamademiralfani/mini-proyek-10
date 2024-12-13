@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.vercel.furniture_lumosh.twa",
+        "sha256_cert_fingerprints": ["A2:49:6A:3B:BA:6C:12:A6:6B:8B:CE:D9:76:03:5D:FD:5A:31:6E:9B:C3:1A:CB:82:B1:8E:7E:CB:AE:FB:F1:8E"]
+      }
+    }]
