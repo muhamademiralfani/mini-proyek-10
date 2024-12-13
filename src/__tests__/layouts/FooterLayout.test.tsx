@@ -2,14 +2,14 @@ import { render, screen } from '@testing-library/react';
 import FooterLayout from '../../layouts/FooterLayout';
 
 jest.mock('react-share', () => ({
-  FacebookShareButton: jest.fn(({ children }) => <div data-testid="facebook">{children}</div>),
-  TwitterShareButton: jest.fn(({ children }) => <div data-testid="twitter">{children}</div>),
-  WhatsappShareButton: jest.fn(({ children }) => <div data-testid="whatsapp">{children}</div>),
-  LinkedinShareButton: jest.fn(({ children }) => <div data-testid="linkedin">{children}</div>),
-  FacebookIcon: jest.fn(() => <div data-testid="facebook-icon" />),
-  TwitterIcon: jest.fn(() => <div data-testid="twitter-icon" />),
-  WhatsappIcon: jest.fn(() => <div data-testid="whatsapp-icon" />),
-  LinkedinIcon: jest.fn(() => <div data-testid="linkedin-icon" />),
+  FacebookShareButton: jest.fn(({ children }) => <div data-testid='facebook'>{children}</div>),
+  TwitterShareButton: jest.fn(({ children }) => <div data-testid='twitter'>{children}</div>),
+  WhatsappShareButton: jest.fn(({ children }) => <div data-testid='whatsapp'>{children}</div>),
+  LinkedinShareButton: jest.fn(({ children }) => <div data-testid='linkedin'>{children}</div>),
+  FacebookIcon: jest.fn(() => <div data-testid='facebook-icon' />),
+  TwitterIcon: jest.fn(() => <div data-testid='twitter-icon' />),
+  WhatsappIcon: jest.fn(() => <div data-testid='whatsapp-icon' />),
+  LinkedinIcon: jest.fn(() => <div data-testid='linkedin-icon' />),
 }));
 
 describe('FooterLayout Component', () => {
@@ -36,13 +36,7 @@ describe('FooterLayout Component', () => {
 
   it('renders all footer sections', () => {
     render(<FooterLayout />);
-    const sectionTitles = [
-      'Our Products',
-      'Top Features',
-      'Resources',
-      'Company',
-      'Favourite Things',
-    ];
+    const sectionTitles = ['Our Products', 'Top Features', 'Resources', 'Company', 'Favourite Things'];
     sectionTitles.forEach((title) => {
       expect(screen.getByText(title)).toBeInTheDocument();
     });
