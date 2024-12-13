@@ -1,56 +1,57 @@
 import React, { useState } from 'react';
 import contactimage from '../assets/contactus.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { postSubscription } from '../redux/async/contactSlice';
+import { RootState, AppDispatch } from '../redux/store';
 
-interface ContactUsProps {
-  onSubmit?: (email: string) => void;
-}
-
-const ContactUsComponent: React.FC<ContactUsProps> = ({ onSubmit }) => {
-  const [email, setEmail] = useState<string>('');
+const ContactUsComponent: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const { status, error, message } = useSelector((state: RootState) => state.contact);
+  const [email, setEmail] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (onSubmit) {
-      onSubmit(email);
-    }
+    dispatch(postSubscription(email));
     setEmail('');
   };
 
   return (
-    <div
-      className="relative max-w-screen-2xl h-screen bg-cover bg-center bg-no-repeat"
+    <section
+      id='contact'
+      className='w-full h-[400px] md:h-[500px] relative overflow-hidden'
       style={{
-        backgroundImage: `url('${contactimage}')`,
+        backgroundImage: `url(${contactimage})`,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-      }}
-    >
-      <div className="relative z-10 container max-w-screen-xl mx-auto px-4 flex items-center justify-center h-full">
-        <div className="w-full md:w-1/2 max-w-md ml-auto">
-          <div className="text-center md:text-left">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">Get More Discount</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Off Your Order</h3>
-            <p className="text-white/90 text-lg mb-8">Join our mailing list</p>
+      }}>
+      <div className='relative z-10 w-full h-full flex justify-end items-center px-6 md:px-12 max-w-screen-xl mx-auto text-center lg:text-start'>
+        <div className='w-full md:w-5/6 max-w-md'>
+          <div>
+            <h2 className='text-3xl md:text-4xl font-bold text-white mb-2'>Get more discount</h2>
+            <h3 className='text-2xl md:text-3xl font-bold text-white mb-4'>Off your order</h3>
+            <p className='text-white/90 text-base mb-6'>Join our mailing list</p>
 
-            <form onSubmit={handleSubmit} className="flex items-center w-full gap-2">
+            <form onSubmit={handleSubmit} className='flex items-center gap-3 justify-center w-full mx-auto'>
               <input
-                type="email"
+                type='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email address"
-                className="flex-1 px-4 py-3 rounded-lg bg-white/90 backdrop-blur-sm text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all duration-200"
+                placeholder='Your email address'
+                className='flex-1 px-2 py-2.5 rounded bg-white text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all duration-200'
                 required
               />
-              <button
-                type="submit"
-                className="px-4 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap font-medium"
-              >
-                Shop Now
+              <button type='submit' className='px-6 lg:py-2.5 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 transition-colors duration-200 text-xl font-medium whitespace-nowrap'>
+                {status === 'loading' ? 'Submitting...' : 'Shop Now'}
               </button>
             </form>
+
+            {status === 'succeeded' && <p className='mt-4 text-green-500'>{message || 'Subscribed successfully!'}</p>}
+            {status === 'failed' && <p className='mt-4 text-red-500'>{error}</p>}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

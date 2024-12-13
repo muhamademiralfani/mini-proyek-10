@@ -26,7 +26,7 @@ const AllProductComponent: React.FC = () => {
   const productsWithPlaceholders = fillEmptyProducts(products, 8);
 
   return (
-    <div className='container max-w-screen-xl mx-auto px-4 py-10'>
+    <section id='features' className='container max-w-screen-xl mx-auto px-4 py-10'>
       <h1 className='text-3xl font-semibold text-center mb-4'>All Product</h1>
       <p className='text-center text-gray-500 mb-10 max-w-xl mx-auto'>The products we provide only for you as our service are selected from the best products with number 1 quality in the world.</p>
 
@@ -78,7 +78,7 @@ const AllProductComponent: React.FC = () => {
           &rarr;
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

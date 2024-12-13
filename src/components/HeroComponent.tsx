@@ -22,6 +22,7 @@ const HeroComponent: React.FC = () => {
 
   return (
     <header
+      id='home'
       style={{
         background: `url(${banner}) center/cover no-repeat`,
         width: '100%',

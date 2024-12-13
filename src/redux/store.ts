@@ -4,6 +4,7 @@ import dataReducer from './async/dataSlice';
 import categoryReducer from './async/categorySlice';
 import productReducer from './async/productSlice';
 import testimonialReducer from './async/testimonialSlice';
+import contactReducer from './async/contactSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     category: categoryReducer,
     products: productReducer,
     testimonials: testimonialReducer,
+    contact : contactReducer
   },
 });
 

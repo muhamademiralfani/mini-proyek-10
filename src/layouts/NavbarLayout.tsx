@@ -33,7 +33,7 @@
             <ul className='hidden md:flex items-center space-x-6 md:space-x-8 lg:space-x-10'>
               {navlist.map((item, index) => (
                 <li key={index}>
-                  <a className={`text-base ${isScrolled ? 'text-black' : 'text-white'}`} href='#' onClick={closeMenu}>
+                  <a className={`text-base ${isScrolled ? 'text-black' : 'text-white'}`} href={`#${item.toLowerCase()}`} onClick={closeMenu}>
                     {item}
                   </a>
                 </li>
