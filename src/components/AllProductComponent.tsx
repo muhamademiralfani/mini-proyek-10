@@ -45,7 +45,7 @@ const AllProductComponent: React.FC = () => {
 
       {status === 'loading' && (
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gray-500" role="status"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-gray-500" role="status"></div>
         </div>
       )}
 
@@ -53,8 +53,8 @@ const AllProductComponent: React.FC = () => {
 
       {status === 'succeeded' && (
         <div
-          className={`grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 transition-opacity duration-700 ease-out transform $ {
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+          className={`grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 transition-all duration-700 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5'
           }`}
         >
           {productsWithPlaceholders.map((product, index) => (
@@ -98,8 +98,8 @@ const AllProductComponent: React.FC = () => {
 
       {/* Custom Pagination */}
       <div
-        className={`flex justify-center items-center mt-8 transition-opacity duration-700 ease-out transform $ {
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+        className={`flex justify-center items-center mt-8 transition-all duration-700 ease-out ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5'
         }`}
       >
         <button
