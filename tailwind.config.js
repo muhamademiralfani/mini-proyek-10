@@ -1,17 +1,19 @@
 /** @type {import('tailwindcss').Config} */
+import tailwindScrollbarHide from 'tailwind-scrollbar-hide';
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
-        saira: ['Saira', 'sans-serif'], //  font Saira
+        saira: ['Saira', 'sans-serif'],
       },
       colors: {
-        tealDark: '#286F6C', // Indikasi warna teal gelap
+        tealDark: '#286F6C',
       },
     },
   },
   plugins: [
-    require('tailwind-scrollbar-hide'), // Tambahkan plugin
+    tailwindScrollbarHide,
   ],
 };
