@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+Allow: /
+Sitemap: https://mini-proyek-9-landing-page.vercel.app/sitemap.xml

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DOMPurify from 'dompurify';
 import contactimage from '../assets/contactus.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { postSubscription } from '../redux/async/contactSlice';
@@ -14,6 +15,10 @@ const ContactUsComponent: React.FC = () => {
     dispatch(postSubscription(email));
     setEmail('');
   };
+
+  // Sanitize message and error
+  const sanitizedMessage = DOMPurify.sanitize(message || 'Subscribed successfully!');
+  const sanitizedError = DOMPurify.sanitize(error || '');
 
   return (
     <section
@@ -41,13 +46,25 @@ const ContactUsComponent: React.FC = () => {
                 className='flex-1 px-2 py-2.5 rounded bg-white text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all duration-200'
                 required
               />
-              <button type='submit' className='px-6 lg:py-2.5 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 transition-colors duration-200 text-xl font-medium whitespace-nowrap'>
+              <button
+                type='submit'
+                className='px-6 lg:py-2.5 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 transition-colors duration-200 text-xl font-medium whitespace-nowrap'>
                 {status === 'loading' ? 'Submitting...' : 'Shop Now'}
               </button>
             </form>
 
-            {status === 'succeeded' && <p className='mt-4 text-green-500'>{message || 'Subscribed successfully!'}</p>}
-            {status === 'failed' && <p className='mt-4 text-red-500'>{error}</p>}
+            {status === 'succeeded' && (
+              <p
+                className='mt-4 text-green-500'
+                dangerouslySetInnerHTML={{ __html: sanitizedMessage }}
+              />
+            )}
+            {status === 'failed' && (
+              <p
+                className='mt-4 text-red-500'
+                dangerouslySetInnerHTML={{ __html: sanitizedError }}
+              />
+            )}
           </div>
         </div>
       </div>
